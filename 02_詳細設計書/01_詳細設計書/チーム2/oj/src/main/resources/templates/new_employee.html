@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Create New Employee</title>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#join_datepicker").datepicker({
+			dateFormat : "yy-mm-dd"
+		});
+		$("#retire_datepicker").datepicker({
+			dateFormat : "yy-mm-dd"
+		});
+	});
+</script>
+</head>
+<body>
+	<div align="center">
+		<h1>Create New Emloyee</h1>
+		<br />
+		<form action="#" th:action="@{/save}" th:object="${employee}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Employee Name:</td>
+					<td><input type="text" th:field="*{name}" /></td>
+				</tr>
+				<tr>
+					<td>Age:</td>
+					<td><input type="text" th:field="*{age}" /></td>
+				</tr>
+				<tr>
+					<td>Department:</td>
+					<td>
+					<select th:field="*{dept}">
+						<option th:value="IT" th:text="IT"></option>
+						<option th:value="HR" th:text="HR"></option>
+						<option th:value="Sales" th:text="Sales"></option>
+					</select>
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>Gender:</td>
+					<td><input type="radio" th:field="*{gender}" th:value="Male"
+						th:text="Male" /> <input type="radio" th:field="*{gender}"
+						th:value="Female" th:text="Female" /></td>
+				</tr>
+
+				<tr>
+					<td>Joining Date:</td>
+					<td><input type="date" id="join_datepicker"
+						th:field="*{joiningDate}"></td>
+				</tr>
+				<tr>
+					<td>Retiring Date:</td>
+					<td><input type="date" id="retire_datepicker"
+						th:field="*{retiringDate}"></td>
+				</tr>
+				<tr>
+				  <td>Email_address:</td>
+				  <td><input type="text" th:field="*{mailaddress}" /></td>
+				</tr>
+				  
+				
+				<tr>
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+				<tr>
+				<td colspan ="2"><button type="button"onclick="history.back()">close</button></td>
+				
+				
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
