@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,6 +44,19 @@ public class EmployeeController {
 		return "index";
 		
 	}
+	 @GetMapping("/showFormForUpdate/{id}")
+	    public String updateForm(@PathVariable(value = "id") long id, Model model) {
+	        Employee employee = service.getById(id);
+	        model.addAttribute("employee", employee);
+	        return "update";
+	    }
+	 
+	    @GetMapping("/deleteEmployee/{id}")
+	    public String deleteThroughId(@PathVariable(value = "id") long id) {
+	        service.deleteViaId(id);
+	        return "redirect:/";
+	 
+	    }
 		
 
 	

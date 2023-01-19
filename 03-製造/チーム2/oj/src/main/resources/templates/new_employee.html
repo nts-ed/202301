@@ -28,16 +28,37 @@
 			method="post">
 
 			<table border="0" cellpadding="10">
-				<tr>
-					<td>Employee Name:</td>
-					<td><input type="text" th:field="*{name}" /></td>
+			    <tr>
+			       <td>Employee ID*:</td>
+			       <td><input type="text"maxlength="10"required="true"th:field="*{id}"/></td>
+			    </tr>
+			    <tr>
+					<td>Joining Date*:</td>
+					<td><input type="date" id="join_datepicker"maxlength="10"required="true"
+						th:field="*{joiningDate}"></td>
 				</tr>
+				<tr>
+					<td>Retiring Date*:</td>
+					<td><input type="date" id="retire_datepicker"maxlength="10"required="true"
+						th:field="*{retiringDate}"></td>
+				</tr>
+				<tr>
+					<td>Employee Name*:</td>
+					<td><input type="text" maxlength="20" required="true" th:field="*{name}" /></td>
+				</tr>
+				<tr>
+					<td>Gender:</td>
+					<td><input type="radio" maxlength="10" th:field="*{gender}" th:value="Male"
+						th:text="Male" /> <input type="radio" maxlength="10" th:field="*{gender}"
+						th:value="Female" th:text="Female" /></td>
+				</tr>
+
 				<tr>
 					<td>Age:</td>
-					<td><input type="text" th:field="*{age}" /></td>
+					<td><input type="text" maxlength="10"th:field="*{age}" /></td>
 				</tr>
 				<tr>
-					<td>Department:</td>
+					<td>Department*:</td>
 					<td>
 					<select th:field="*{dept}">
 						<option th:value="IT" th:text="IT"></option>
@@ -48,26 +69,11 @@
 
 				</tr>
 
-				<tr>
-					<td>Gender:</td>
-					<td><input type="radio" th:field="*{gender}" th:value="Male"
-						th:text="Male" /> <input type="radio" th:field="*{gender}"
-						th:value="Female" th:text="Female" /></td>
-				</tr>
-
-				<tr>
-					<td>Joining Date:</td>
-					<td><input type="date" id="join_datepicker"
-						th:field="*{joiningDate}"></td>
-				</tr>
-				<tr>
-					<td>Retiring Date:</td>
-					<td><input type="date" id="retire_datepicker"
-						th:field="*{retiringDate}"></td>
-				</tr>
+				
+				
 				<tr>
 				  <td>Email_address:</td>
-				  <td><input type="text" th:field="*{mailaddress}" /></td>
+				  <td><input type="text" maxlength="50" th:field="*{mailaddress}" /></td>
 				</tr>
 				  
 				
