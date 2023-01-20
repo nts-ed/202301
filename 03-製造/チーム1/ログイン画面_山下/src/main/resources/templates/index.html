@@ -40,7 +40,7 @@
 		<form method="post" action="#" th:action="@{/login}" th:object="${loginForm}">
 			<h1 class="h3 mb-3 fw-normal" th:text="${title}"></h1>
 			<div class="form-floating">
-				<input type="id" name="id" class="form-control" id="floatingInput" placeholder="社員ID">
+				<input type="id" name="id" class="form-control" id="floatingInput" placeholder="社員ID" th:value="*{id}">
 				<label for="floatingInput">社員ID</label>
 				<div class="text-danger mb-4" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
 			</div>

@@ -33,9 +33,11 @@ public class LoginController {
 		// 社員のチェックを行います
 		List<Employee> isExists = employeeRepository.checkEmployee(param.getId(), param.getPass());
 		if (isExists.size() == 1) {
-			model.addAttribute("title", "勤怠管理成功");
-			return "login/index";
+			model.addAttribute("loginList", isExists);
+			model.addAttribute("title", "勤怠管理ログイン成功");
+			return "login/index"; //ログイン成功時ここを変更する
 		}
+		//フォームに入力誤りがあった場合
 		if(result.hasErrors()) {
 			model.addAttribute("title", "勤怠管理システム");
 			return "index";

@@ -1,7 +1,5 @@
 package com.nts_ed.ks.controller;
 
-import org.hibernate.validator.constraints.Length;
-
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +8,6 @@ public class LoginForm {
 
 	@NotNull(message = "社員IDを入力してください。")
 	@NotBlank(message = "社員IDが存在しておりません。")
-	@Length(min = 10, max = 10)
 	private String id;
 	
 	@NotNull(message = "パスワードを入力してください。")
