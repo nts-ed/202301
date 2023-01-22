@@ -2,7 +2,6 @@ package com.nts_ed.ks.controller;
 
 import java.util.List;
 
-import org.hibernate.metamodel.model.domain.ManagedDomainType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -34,16 +33,32 @@ public class IndexController {
 //		return "";
 		return null;
 	}
+
 	
 	@PostMapping(path = "testform")
-	public @ResponseBody String test(@ModelAttribute LoginParam param) {
-		// 社員のチェックを行います
+//	public @ResponseBody String test(@ModelAttribute LoginParam param) {
+//		// 社員のチェックを行います
+//		return null;
+//	}
+	
+	public String testform(@ModelAttribute LoginParam param) {
 		List<Employee> isExists = employeeRepository.checkEmployee(param.getId(), param.getPass());
-		if (isExists.size() == 1) {
-			return "successful";
-		}
-		return null;
+//		List<Employee> isExists1 = employeeRepository.checkEmployeeID(param.getId());
+//		if (isExists1.size() == 1) {
+			
+			if (isExists.size() == 1) {
+				return "main.html";
+			}
+			else {
+				return "password error";
+			}
+//		}
+//		else {
+//			return "ID error";
+//		}
+//		
 	}
+
 	
 	@GetMapping(path = "/")
 	public String index() {
