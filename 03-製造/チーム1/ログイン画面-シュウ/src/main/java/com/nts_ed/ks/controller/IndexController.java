@@ -43,20 +43,20 @@ public class IndexController {
 	
 	public String testform(@ModelAttribute LoginParam param) {
 		List<Employee> isExists = employeeRepository.checkEmployee(param.getId(), param.getPass());
-//		List<Employee> isExists1 = employeeRepository.checkEmployeeID(param.getId());
-//		if (isExists1.size() == 1) {
+		List<Employee> isExists1 = employeeRepository.checkEmployeeID(param.getId());
+		if (isExists1.size() == 1) {
 			
 			if (isExists.size() == 1) {
 				return "main.html";
 			}
 			else {
-				return "password error";
+				return "passerror.html";
 			}
-//		}
-//		else {
-//			return "ID error";
-//		}
-//		
+		}
+		else {
+			return "iderror.html";
+		}
+		
 	}
 
 	

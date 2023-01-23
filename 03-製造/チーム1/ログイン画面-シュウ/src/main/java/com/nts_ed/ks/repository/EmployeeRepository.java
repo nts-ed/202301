@@ -12,12 +12,6 @@ import com.nts_ed.ks.dto.Employee;
 // CRUD refers Create,Read,Update,Delete
 // Hibernate
 
-//public interface EmployeeRepository extends CrudRepository<Employee,Integer> {
-//	
-//	@Query(value = "SELECT * FROM t_employee WHERE employee_id = :EMPLOYEE_ID AND password = :PASSWORD",nativeQuery = true)
-//	List<Employee> checkEmployee(@Param("EMPLOYEE_ID") String id,@Param("PASSWORD") String password);
-//}
-
 public interface EmployeeRepository extends CrudRepository<Employee,Integer> {
 	
 	@Query(value = "SELECT * FROM t_employee WHERE employee_id = :EMPLOYEE_ID AND password = :PASSWORD",nativeQuery = true)
