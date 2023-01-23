@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title> 
+<script type="text/javascript">
+	function onLogin(){
+		console.log("onLogin")
+		var id = document.getElementById("id").value;
+		var pass = document.getElementById("pass").value;
+		fetch("/login",{
+			method:"POST",
+			headers:{
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body : JSON.stringify({id: id, pass: pass})
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data);
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+		});
+	}
+</script>
+ 
+</head>
+<body>
+ 	<form method="post" th:action="@{/testform}">
+		<div>
+			<label for="id">社員ID</label><input id="id" name="id" type="text">
+		</div>
+		<div>
+			<label for="pass">パスワード</label><input id="pass" name="pass" type="password">
+		</div>
+		<div>
+			<input style="color:white;background-color:#4689FF;" type="submit" value="ログイン"/>
+		</div>
+	</form>
+</body>
+</html>
