@@ -12,13 +12,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import lombok.Data;
 import tech.arrays.employeemanagement.depart.Employee;
+import tech.arrays.employeemanagement.repository.EmployeeRepository;
 import tech.arrays.employeemanagement.service.EmployeeService;
 @Controller
+@Data
 public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
-
+    
+	@Autowired
+	private EmployeeRepository repo;
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
@@ -44,20 +49,36 @@ public class EmployeeController {
 		return "index";
 		
 	}
+//	@RequestMapping(value="delete",method = RequestMethod.POST)
+//	public String delete(HttpServletRequest request, ModelMap modelMap) {
+//		try {
+//		
+//			for(String productId: request.getParameterValues("productId")) {
+//		    }
+//			return "redirect:index";
+//		}catch(Exception e) {
+//			modelMap.put("error",e.getMessage());
+//			modelMap.put("employeeList",service.findAll());
+//			return "index";
+//		}
+//		
+//	}
+//	
 	 @GetMapping("/showFormForUpdate/{id}")
 	    public String updateForm(@PathVariable(value = "id") long id, Model model) {
 	        Employee employee = service.getById(id);
+	        
 	        model.addAttribute("employee", employee);
 	        return "update";
 	    }
 	 
-	    @GetMapping("/deleteEmployee/{id}")
-	    public String deleteThroughId(@PathVariable(value = "id") long id) {
-	        service.deleteViaId(id);
-	        return "redirect:/";
-	 
-	    }
-		
+    @GetMapping("/deleteEmployee/{id}")
+    public String deleteThroughId(@PathVariable(value = "id") long id) {
+        service.deleteEmployeeById(id);
+        return "redirect:/";
+ 
+    }
+	
 
 	
 	

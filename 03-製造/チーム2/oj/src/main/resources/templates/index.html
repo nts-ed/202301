@@ -10,8 +10,16 @@
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
+	<script type="text/javascript" 
+	src="${pageContent.request.contextPath}/js/jquery-1.10.2.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
+			$('#checkBoxrow').ready(function(){
+				if($(this).is(":checked"))
+				   $('.chkCheckBoxId').prop('checked',true);
+				else
+				   $('.chkCheckBoxId').prop('checked',false);
+			});
 			$('#data-table').DataTable();
 			
 		});
@@ -19,6 +27,7 @@
 </head>
 
 <body>
+  
 	<div class="content">
 		<div class="animated fadeIn">
 			<div class="row">
@@ -26,31 +35,27 @@
 					<div class="card">
 						<div class="card-header">
 							<strong class="card-title">
-								<h1 style="text-align: center; color:rgb(128, 128, 255); font-weight: bold;">EMPLOYEE
+								<h1 style="text-align: center; color:aquamarine; font-weight: bold;">EMPLOYEE
 									MANAGEMENT</h1>
 							</strong>
+							
 							<div style="text-align: center; font-weight: bold">
 								<a href="new">Create New Employee</a> <br />
 							</div>
 						</div>
-						    
 						
-						
-						
+						 <div align="right">
+                           <form method ="post"
+                            action="account?action=delete">
+                           <input type="submit"value="Delete"onClick="return confirm('Are you sure?')"/>
+                           <button class="right"type="submit">Add</button>
+                           <button class="right"type="submit">Close</button>
+                          </form>
+                        </div>
 						<div class="card-body">
 						
-               
-						       <tr>
-								 <td colspan="2"><button class="right" type="submit">Addition</button></td>
-						     </tr>  
-						      <tr>
-								 <td colspan="2"><button class="right" type="submit">Delete</button></td>
-						     </tr> 
-						          
-						     <tr>
-								 <td colspan="2"><button class="right" type="submit">Close</button></td>
-						     </tr>  
-						       
+						             
+						
 						
 							<table id="data-table" class="table table-striped table-bordered">
 							
@@ -86,6 +91,7 @@
 									</tr>
 								</tbody>
 							</table>
+						</div>
 						</div>
 					</div>
 				</div>

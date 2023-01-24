@@ -33,7 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	        return employee;
 	    }
 	 
-	    @Override public void deleteViaId(long id)
+	    @Override public void deleteEmployeeById(long id)
 	    {
 	        repo.deleteById(id);
 	    }
