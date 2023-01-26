@@ -25,18 +25,22 @@
 		});
 	}
 </script>
- 
 </head>
 <body>
- 	<form method="post" th:action="@{/testform}">
-		<div>
-			<label for="id">社員ID</label><input id="id" name="id" type="text">
-		</div>
-		<div>
-			<label for="pass">パスワード</label><input id="pass" name="pass" type="password">
-		</div>
-		<div>
-			<input style="color:white;background-color:#4689FF;" type="submit" value="ログイン"/>
+ 	<form action="#" th:action="@{/testform}" th:object="${loginForm}" method="post">
+		<div id="box" style="height:500px; width:400px; margin:auto;font-size:20px;">
+			<br><br><br><br><br><br><br><br>
+			<input style="color:white;background-color:#4689FF;text-align:center;font-size:20px;height:40px;width:300px" value="勤怠管理システム"/><br><br>
+				<label for="id">社員ID</label>
+					<br><input id="id" name="id" type="text" style="font-size:20px;height:60px;width:300px;background:#f5f5f5;border:0" placeholder="id" ><br>
+					<div th:field="*{id}" th:if="${#fields.hasErrors('id')}" th:errors="*{id}" style="color: red"></div>
+						<p style="color: red" th:text="${msg2}" th:if="${not #strings.isEmpty(msg2)}"></p>
+				<label for="pass">パスワード</label>
+					<br><input id="pass" name="pass" type="password" style="font-size:20px;height:60px;width:300px;background:#f5f5f5;border:0" placeholder="password"><br>
+					<div th:field="*{pass}" th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}" style="color: red"></div>
+						<p style="color: red" th:text="${msg1}" th:if="${not #strings.isEmpty(msg1)}"></p>
+						<br>
+			<input style="color:white;background-color:#4689FF;font-size:20px;height:50px;width:300px" type="submit" value="ログイン" onclick="onLogin()"/>
 		</div>
 	</form>
 </body>
